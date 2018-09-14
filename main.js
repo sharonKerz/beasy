@@ -72,8 +72,8 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Serve HTML files out of ./public
-app.use(express.static(__dirname + '/public'));
+//serves the index.html
+app.use(express.static(__dirname)); 
 
 // Handle POST requests sent to the /registration URL. Note
 // that the /public directory doesn't have anything that
