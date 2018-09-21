@@ -36,7 +36,8 @@ const config = {
          loader: "babel-loader",
          options: {
            cacheDirectory: true,
-           presets: ['@babel/preset-env', '@babel/preset-react'] // Transpiles JSX and ES6
+           presets: ['@babel/preset-env', '@babel/preset-react'], // Transpiles JSX and ES6
+           plugins: ["@babel/plugin-proposal-class-properties"]
          }
        }]
      }
