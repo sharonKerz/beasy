@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout/Layout'
-import SimpleSuccessTest from './components/SimpleSuccessText/SimpleSuccessText';
+import StageBuilder from './components/StageBuilder/StageBuilder'
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Layout>
-          <p> Test </p>
-          <SimpleSuccessTest></SimpleSuccessTest>
+          <StageBuilder />
         </Layout>
       </div>
     );
