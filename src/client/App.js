@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout/Layout'
-import StageBuilder from './components/StageBuilder/StageBuilder'
+import StageBuilder from './containers/StageBuilder/StageBuilder'
 class App extends Component {
   render() {
     return (
