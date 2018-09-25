@@ -1,8 +1,8 @@
 import React from 'react'
-import Profile from './Profile'
+import ProfileCard from './ProfileCard'
 const profiles = (prop) => (
     prop.profiles.map((profile, index) => {
-        return <Profile profile={profile}></Profile>
+        return <ProfileCard profile={profile}></ProfileCard>
     })
 );
 

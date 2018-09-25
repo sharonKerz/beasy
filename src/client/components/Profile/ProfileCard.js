@@ -53,13 +53,11 @@ class RecipeReviewCard extends React.Component {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
-  render(prop) {
-    console.log("profile: " + this.props)
-
+  render() {
     const { classes } = this.props;
     const { profile } = this.props;
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card}> 
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
