@@ -73,7 +73,7 @@ class RecipeReviewCard extends React.Component {
           title={profile.title}
           subheader={profile.companyName + ", " + profile.date}
         />
-        <CardActionArea onClick={openModal}>
+        <CardActionArea onClick={openModal.bind(this, profile)}>
           <CardMedia
             className={classes.media}
             image={"assets/images/profiles/" + profile.companyName + ".jpg"}

@@ -38,7 +38,8 @@ class StageBuilder extends Component {
     }
 
     
-    openModalHandle = () => {
+    openModalHandle = (profile) => {
+        this.setState({ selectedProfile: profile });
         this.setState({ openModal: true });
     };
 
@@ -50,13 +51,14 @@ class StageBuilder extends Component {
         return (
             <Wrapper>
                 <Modal isOpen={this.state.openModal} closeModal={this.closeModalHandle}>
-                    <ProfileSummery profile={this.state.selectedProfile} />
+                    <ProfileSummery profile={this.state.selectedProfile}/>
                 </Modal>
                 <div>Search</div>
                 <div>Profiles</div>
                 <div>
                     <CenterHorizontalGrid>
-                        <Profiles profiles={this.state.profiles} openModal={this.openModalHandle}/>
+                        <Profiles profiles={this.state.profiles} 
+                        openModal={this.openModalHandle}/>
                     </CenterHorizontalGrid>
                 </div>
             </Wrapper>
