@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
+
 
 function getModalStyle() {
     const top = 50;
@@ -26,29 +26,16 @@ const styles = theme => ({
 });
 
 class SimpleModal extends React.Component {
-    state = {
-        open: false,
-    };
-
-    handleOpen = () => {
-        this.setState({ open: true });
-    };
-
-    handleClose = () => {
-        this.setState({ open: false });
-    };
-
     render() {
         const { classes } = this.props;
         const {children} = this.props;
         return (
             <div>
-                <Button onClick={this.handleOpen}>Open Modal</Button>
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
-                    open={this.state.open}
-                    onClose={this.handleClose}>
+                    open={this.props.isOpen}
+                    onClose={this.props.closeModal}>
 
                     <div style={getModalStyle()} className={classes.paper}>
                         {children}

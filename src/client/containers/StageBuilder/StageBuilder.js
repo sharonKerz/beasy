@@ -8,6 +8,7 @@ import ProfileSummery from '../../components/Profile/ProfileSummery'
 
 class StageBuilder extends Component {
     state = {
+        openModal: false,
         profiles: [
             {
                 companyName: "IBM",
@@ -35,17 +36,27 @@ class StageBuilder extends Component {
             body: "We looking for start ups to use our amazing Watson API"
         }
     }
+
+    
+    openModalHandle = () => {
+        this.setState({ openModal: true });
+    };
+
+    closeModalHandle = () => {
+        this.setState({ openModal: false });
+    };
+
     render() {
         return (
             <Wrapper>
-                <Modal>
+                <Modal isOpen={this.state.openModal} closeModal={this.closeModalHandle}>
                     <ProfileSummery profile={this.state.selectedProfile} />
                 </Modal>
                 <div>Search</div>
                 <div>Profiles</div>
                 <div>
                     <CenterHorizontalGrid>
-                        <Profiles profiles={this.state.profiles} />
+                        <Profiles profiles={this.state.profiles} openModal={this.openModalHandle}/>
                     </CenterHorizontalGrid>
                 </div>
             </Wrapper>
