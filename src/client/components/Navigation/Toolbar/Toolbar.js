@@ -16,6 +16,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import NavigationItems from '../NavigationItems/NavigationItems'
 
 const styles = theme => ({
   root: {
@@ -185,6 +186,7 @@ class PrimarySearchAppBar extends React.Component {
                 }}
               />
             </div>
+            <NavigationItems></NavigationItems>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
