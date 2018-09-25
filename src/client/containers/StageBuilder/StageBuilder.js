@@ -53,7 +53,6 @@ class StageBuilder extends Component {
                 <Modal isOpen={this.state.openModal} closeModal={this.closeModalHandle}>
                     <ProfileSummery profile={this.state.selectedProfile}/>
                 </Modal>
-                <div>Search</div>
                 <div>Profiles</div>
                 <div>
                     <CenterHorizontalGrid>
