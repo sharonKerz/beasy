@@ -7,6 +7,7 @@ import Profiles from '../../components/Profile/Profiles'
 import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
 import ProfileSummery from '../../components/Profile/ProfileSummery'
+import AddButton from '../../components/Buttons/AddButton/AddButton'
 
 class StageBuilder extends Component {
     state = {
@@ -16,7 +17,7 @@ class StageBuilder extends Component {
     }
 
     componentDidMount() {
-        
+
         axios.get('/profiles').then(response => {
             this.setState({ profiles: response.data })
             console.log(response);
@@ -38,7 +39,10 @@ class StageBuilder extends Component {
                 <Modal isOpen={this.state.openModal} closeModal={this.closeModalHandle}>
                     <ProfileSummery profile={this.state.selectedProfile} />
                 </Modal>
-                <div>Profiles</div>
+                <div>
+                    <h2>Profiles</h2>
+                    <AddButton></AddButton>
+                </div>
                 <div>
                     <CenterHorizontalGrid>
                         <Profiles profiles={this.state.profiles}
