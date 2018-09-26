@@ -94,6 +94,29 @@ app.post('/registration', function(req, res){
   res.redirect("/registered.html");
 });
 
+// Beasy
+app.get('/profiles', function(req, res){
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify([
+        {
+            companyName: "IBM from Server",
+            title: "looking for start ups",
+            date: "September 14, 2018",
+            body: "We looking for start ups to use our amazing Watson API"
+        },
+        {
+            companyName: "Microsoft from Server",
+            title: "looking for event place",
+            date: "September 17, 2018",
+            body: "We looking for a large place to host our next event"
+        },
+        {
+            companyName: "Coca Cola from Server",
+            title: "looking for events to promote new product",
+            date: "September 21, 2018",
+            body: "We looking for large events to promote our new product Coca Cola Null"
+        }
+    ]));  });
 // start server on the specified port
 app.listen(port);
 console.log(`Webinar registration server started on port ${port}....`);
