@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-import Wrapper from '../../hoc/Wrapper'
+import Wrapper from '../../hoc/Wrapper/Wrapper'
 import './StageBuilder.css';
 import Profiles from '../../components/Profile/Profiles'
 import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'

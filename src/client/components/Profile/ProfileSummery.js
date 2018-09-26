@@ -1,5 +1,5 @@
 import React from 'react'
-import Wrapper from '../../hoc/Wrapper'
+import Wrapper from '../../hoc/Wrapper/Wrapper'
 const profileSummery = (prop) => (
   <Wrapper>
     <h1> {prop.profile.companyName} </h1>
