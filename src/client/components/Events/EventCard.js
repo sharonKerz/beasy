@@ -48,7 +48,7 @@ const styles = theme => ({
   },
 });
 
-class RecipeReviewCard extends React.Component {
+class EventCard extends React.Component {
   state = { expanded: false };
 
   handleExpandClick = () => {
@@ -56,13 +56,13 @@ class RecipeReviewCard extends React.Component {
   };
 
   render() {
-    const { classes, profile, openModal } = this.props;
+    const { classes, event, openModal } = this.props;
     return (
       <Card className={classes.card}>
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
-              {profile.companyName.charAt(0)}
+              {event.companyName.charAt(0)}
             </Avatar>
           }
           action={
@@ -70,18 +70,18 @@ class RecipeReviewCard extends React.Component {
               <MoreVertIcon />
             </IconButton>
           }
-          title={profile.title}
-          subheader={profile.companyName + ", " + profile.date}
+          title={event.title}
+          subheader={event.companyName + ", " + event.date}
         />
-        <CardActionArea onClick={openModal.bind(this, profile)}>
+        <CardActionArea onClick={openModal.bind(this, event)}>
           <CardMedia
             className={classes.media}
-            image={"assets/images/profiles/" + profile.companyName + ".jpg"}
-            title={profile.companyName}
+            image={"assets/images/events/" + event.companyName + ".jpg"}
+            title={event.companyName}
           />
           <CardContent>
             <Typography component="p">
-              {profile.body}
+              {event.body}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -98,8 +98,8 @@ class RecipeReviewCard extends React.Component {
   }
 }
 
-RecipeReviewCard.propTypes = {
+EventCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(RecipeReviewCard);
+export default withStyles(styles)(EventCard);

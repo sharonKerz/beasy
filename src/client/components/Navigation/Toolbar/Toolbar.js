@@ -94,7 +94,7 @@ class PrimarySearchAppBar extends React.Component {
     mobileMoreAnchorEl: null,
   };
 
-  handleProfileMenuOpen = event => {
+  handleEventMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -125,7 +125,7 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+        <MenuItem onClick={this.handleClose}>Event</MenuItem>
         <MenuItem onClick={this.handleClose}>My account</MenuItem>
       </Menu>
     );
@@ -154,11 +154,11 @@ class PrimarySearchAppBar extends React.Component {
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
+        <MenuItem onClick={this.handleEventMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
           </IconButton>
-          <p>Profile</p>
+          <p>Event</p>
         </MenuItem>
       </Menu>
     );
@@ -202,7 +202,7 @@ class PrimarySearchAppBar extends React.Component {
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : null}
                 aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
+                onClick={this.handleEventMenuOpen}
                 color="inherit"
               >
                 <AccountCircle />

@@ -95,7 +95,7 @@ app.post('/registration', function(req, res){
 });
 
 // Beasy
-app.get('/profiles', function(req, res){
+app.get('/events', function(req, res){
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify([
         {

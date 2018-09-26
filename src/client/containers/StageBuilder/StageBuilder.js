@@ -3,29 +3,29 @@ import axios from 'axios'
 
 import Wrapper from '../../hoc/Wrapper/Wrapper'
 import './StageBuilder.css';
-import Profiles from '../../components/Profile/Profiles'
+import Events from '../../components/Events/Events'
 import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
-import ProfileSummery from '../../components/Profile/ProfileSummery'
-import AddButton from '../../components/Buttons/AddButton/AddButton'
+import EventSummery from '../../components/Events/EventSummery'
+import AddEventButton from '../../components/Buttons/AddEventButton/AddEventButton'
 
 class StageBuilder extends Component {
     state = {
         openModal: false,
-        profiles: [],
-        selectedProfile: {}
+        events: [],
+        selectedEvent: {}
     }
 
     componentDidMount() {
 
-        axios.get('/profiles').then(response => {
-            this.setState({ profiles: response.data })
+        axios.get('/events').then(response => {
+            this.setState({ events: response.data })
             console.log(response);
         });
     }
 
-    openModalHandle = (profile) => {
-        this.setState({ selectedProfile: profile });
+    openModalHandle = (event) => {
+        this.setState({ selectedEvent: event });
         this.setState({ openModal: true });
     };
 
@@ -37,15 +37,15 @@ class StageBuilder extends Component {
         return (
             <Wrapper>
                 <Modal isOpen={this.state.openModal} closeModal={this.closeModalHandle}>
-                    <ProfileSummery profile={this.state.selectedProfile} />
+                    <EventSummery event={this.state.selectedEvent} />
                 </Modal>
                 <div>
-                    <h2>Profiles</h2>
-                    <AddButton></AddButton>
+                    <h2>Events</h2>
+                    <AddEventButton></AddEventButton>
                 </div>
                 <div>
                     <CenterHorizontalGrid>
-                        <Profiles profiles={this.state.profiles}
+                        <Events events={this.state.events}
                             openModal={this.openModalHandle} />
                     </CenterHorizontalGrid>
                 </div>
