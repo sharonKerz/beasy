@@ -184,6 +184,19 @@ app.get('/events', function(req, res){
         }
     ])); 
  });
+
+ app.post('/events', function(req, res){
+    cloudantDB.insert(req.body, function(err, body, header) {
+      if (err) {
+          console.log(`insert failed! ${err.message}`);
+          res.status(500).send(err.message);
+      } else {
+          console.log('New event was successfully processed! with body: ');
+          console.log(req.body);
+      }
+    });
+  });
+
 // start server on the specified port
 app.listen(port);
 console.log(`Webinar registration server started on port ${port}....`);

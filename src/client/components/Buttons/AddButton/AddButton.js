@@ -32,7 +32,7 @@ class AddButton extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, onClick } = this.props;
 
     return (
       <div className={classes.root}>
@@ -40,6 +40,7 @@ class AddButton extends React.Component {
           className={classNames(classes.iconHover, 'fa fa-plus-circle')}
           color="Primary"
           fontSize="large"
+          onClick={onClick}
         />
       </div>
     );
