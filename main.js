@@ -41,7 +41,7 @@ if (process.env.VCAP_SERVICES) {
 const port = process.env.PORT || 8080;
 
 // Just hardcoding the database name, should probably be an env var
-const dbname = 'webinar';
+const dbname = 'events';
 
 // Credentials should be in order, so we're ready to go now. If not,
 // this is going to fail pretty quickly.
@@ -96,93 +96,12 @@ app.post('/registration', function(req, res){
 
 // Beasy
 app.get('/events', function(req, res){
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify([
-        {
-            companyName: "IBM",
-            title: "looking for start ups",
-            date: "September 14, 2018",
-            body: "We looking for start ups to use our amazing Watson API",
-            id: 1
-        },
-        {
-            companyName: "Microsoft",
-            title: "looking for event place",
-            date: "September 17, 2018",
-            body: "We looking for a large place to host our next event",
-            id: 2
-        },
-        {
-            companyName: "Coca Cola",
-            title: "looking for events to promote new product",
-            date: "September 21, 2018",
-            body: "We looking for large events to promote our new product Coca Cola Null",
-            id: 3
-        },
-        {
-            companyName: "IBM 1",
-            title: "looking for start ups",
-            date: "September 14, 2018",
-            body: "We looking for start ups to use our amazing Watson API",
-            id: 4
-        },
-        {
-            companyName: "Microsoft 1",
-            title: "looking for event place",
-            date: "September 17, 2018",
-            body: "We looking for a large place to host our next event",
-            id: 5
-        },
-        {
-            companyName: "Coca Cola 1",
-            title: "looking for events to promote new product",
-            date: "September 21, 2018",
-            body: "We looking for large events to promote our new product Coca Cola Null",
-            id: 6
-        },
-        {
-            companyName: "IBM 2",
-            title: "looking for start ups",
-            date: "September 14, 2018",
-            body: "We looking for start ups to use our amazing Watson API",
-            id: 7
-        },
-        {
-            companyName: "Microsoft 2",
-            title: "looking for event place",
-            date: "September 17, 2018",
-            body: "We looking for a large place to host our next event",
-            id: 8
-        },
-        {
-            companyName: "Coca Cola 2",
-            title: "looking for events to promote new product",
-            date: "September 21, 2018",
-            body: "We looking for large events to promote our new product Coca Cola Null",
-            id: 9
-        },
-        {
-            companyName: "IBM 3",
-            title: "looking for start ups",
-            date: "September 14, 2018",
-            body: "We looking for start ups to use our amazing Watson API",
-            id: 10
-        },
-        {
-            companyName: "Microsoft 3",
-            title: "looking for event place",
-            date: "September 17, 2018",
-            body: "We looking for a large place to host our next event",
-            id: 11
-        },
-        {
-            companyName: "Coca Cola 3",
-            title: "looking for events to promote new product",
-            date: "September 21, 2018",
-            body: "We looking for large events to promote our new product Coca Cola Null",
-            id: 12
-        }
-    ])); 
+    cloudantDB.list({include_docs:true}, function (err, data) {
+        const allDocs = data.rows.map(row => row.doc)
+        res.setHeader('Content-Type', 'application/json');
+        res.send(allDocs);
+      });
+ 
  });
 
  app.post('/events', function(req, res){
@@ -199,4 +118,4 @@ app.get('/events', function(req, res){
 
 // start server on the specified port
 app.listen(port);
-console.log(`Webinar registration server started on port ${port}....`);
+console.log(`Beasy server started on port ${port}....`);
