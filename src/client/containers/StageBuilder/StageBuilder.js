@@ -8,12 +8,17 @@ import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
 import EventSummery from '../../components/Events/EventSummery'
 import AddButton from '../../components/Buttons/AddButton/AddButton'
+import ErrorSummery from '../../components/Errors/ErrorSummery'
 
 class StageBuilder extends Component {
     state = {
-        openModal: false,
+        openEventModal: false,
         events: [],
-        selectedEvent: {}
+        selectedEvent: {},
+        error: {
+            isError: false,
+            message: null
+        }
     }
 
     componentDidMount() {
@@ -23,13 +28,30 @@ class StageBuilder extends Component {
         });
     }
 
-    openModalHandle = (event) => {
+    openEventModalHandle = (event) => {
         this.setState({ selectedEvent: event });
-        this.setState({ openModal: true });
+        this.setState({ openEventModal: true });
     };
 
-    closeModalHandle = () => {
-        this.setState({ openModal: false });
+    closeEventModalHandle = () => {
+        this.setState({ openEventModal: false });
+    };
+
+    openErrorModalHandle = (errorEvent) => {
+        this.setState({
+            error: {
+                isError: true,
+                message: errorEvent
+            }
+        });
+    };
+    closeErrorModalHandle = () => {
+        this.setState({
+            error: {
+                isError: false,
+                message: null
+            }
+        });
     };
 
     addEventHandler = () => {
@@ -40,15 +62,19 @@ class StageBuilder extends Component {
             body: "GeneratedBody",
             id: 100
         }
-        axios.post('/events', event)
+        axios.post('/eventssss', event)
             .then(response => console.log(response))
-            .catch(error => console.log(error))
+            .catch(error => this.openErrorModalHandle(error.message))
     };
 
     render() {
         return (
             <Wrapper>
-                <Modal isOpen={this.state.openModal} closeModal={this.closeModalHandle}>
+                <Modal isOpen={this.state.error.isError} closeModal={this.closeErrorModalHandle}>
+                    <ErrorSummery errorMessage={this.state.error.message} />
+                </Modal>
+
+                <Modal isOpen={this.state.openEventModal} closeModal={this.closeEventModalHandle}>
                     <EventSummery event={this.state.selectedEvent} />
                 </Modal>
                 <div>
@@ -58,7 +84,7 @@ class StageBuilder extends Component {
                 <div>
                     <CenterHorizontalGrid>
                         <Events events={this.state.events}
-                            openModal={this.openModalHandle} />
+                            openEventModal={this.openEventModalHandle} />
                     </CenterHorizontalGrid>
                 </div>
             </Wrapper>
