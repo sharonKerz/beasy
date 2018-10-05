@@ -1,5 +1,6 @@
 node_modules
 
+training_data
 # Logs
 logs
 *.log

@@ -8,17 +8,13 @@ import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
 import EventSummery from '../../components/Events/EventSummery'
 import AddButton from '../../components/Buttons/AddButton/AddButton'
-import ErrorSummery from '../../components/Errors/ErrorSummery'
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class StageBuilder extends Component {
     state = {
         openEventModal: false,
         events: [],
-        selectedEvent: {},
-        error: {
-            isError: false,
-            message: null
-        }
+        selectedEvent: {}
     }
 
     componentDidMount() {
@@ -37,23 +33,6 @@ class StageBuilder extends Component {
         this.setState({ openEventModal: false });
     };
 
-    openErrorModalHandle = (errorEvent) => {
-        this.setState({
-            error: {
-                isError: true,
-                message: errorEvent
-            }
-        });
-    };
-    closeErrorModalHandle = () => {
-        this.setState({
-            error: {
-                isError: false,
-                message: null
-            }
-        });
-    };
-
     addEventHandler = () => {
         const event = {
             companyName: "Generated Company",
@@ -70,10 +49,6 @@ class StageBuilder extends Component {
     render() {
         return (
             <Wrapper>
-                <Modal isOpen={this.state.error.isError} closeModal={this.closeErrorModalHandle}>
-                    <ErrorSummery errorMessage={this.state.error.message} />
-                </Modal>
-
                 <Modal isOpen={this.state.openEventModal} closeModal={this.closeEventModalHandle}>
                     <EventSummery event={this.state.selectedEvent} />
                 </Modal>
@@ -92,4 +67,4 @@ class StageBuilder extends Component {
     }
 }
 
-export default StageBuilder;
+export default withErrorHandler(StageBuilder, axios);
