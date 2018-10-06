@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from '../../axios/axios-beasy'
 
 import Wrapper from '../../hoc/Wrapper/Wrapper'
-import './StageBuilder.css';
 import Events from '../../components/Events/Events'
 import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
@@ -10,7 +9,7 @@ import EventSummery from '../../components/Events/EventSummery'
 import AddButton from '../../components/Buttons/AddButton/AddButton'
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
-class StageBuilder extends Component {
+class EventsBuilder extends Component {
     state = {
         openEventModal: false,
         events: [],
@@ -67,4 +66,4 @@ class StageBuilder extends Component {
     }
 }
 
-export default withErrorHandler(StageBuilder, axios);
+export default withErrorHandler(EventsBuilder, axios);
