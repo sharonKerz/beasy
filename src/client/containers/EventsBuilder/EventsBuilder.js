@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../../axios/axios-beasy'
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import {withRouter} from 'react-router-dom';
 
 import Wrapper from '../../hoc/Wrapper/Wrapper'
 import Events from '../../components/Events/Events'
@@ -7,7 +9,6 @@ import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
 import EventSummery from '../../components/Events/EventSummery'
 import AddButton from '../../components/Buttons/AddButton/AddButton'
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class EventsBuilder extends Component {
     state = {
@@ -17,6 +18,7 @@ class EventsBuilder extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         axios.get('/events').then(response => {
             this.setState({ events: response.data })
             console.log(response);
@@ -66,4 +68,4 @@ class EventsBuilder extends Component {
     }
 }
 
-export default withErrorHandler(EventsBuilder, axios);
+export default withRouter(withErrorHandler(EventsBuilder, axios));
