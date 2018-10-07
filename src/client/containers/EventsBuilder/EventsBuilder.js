@@ -18,7 +18,6 @@ class EventsBuilder extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         axios.get('/events').then(response => {
             this.setState({ events: response.data })
             console.log(response);

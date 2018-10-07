@@ -5,7 +5,10 @@ import {withRouter} from 'react-router-dom';
 
 class EventSummery extends React.Component {
   redirectToCompanies = () => {
-    this.props.history.push('/Companies')
+    this.props.history.push({
+      pathname: '/Companies',
+      search: '?id=' + this.props.event.id
+    })
   }
   render() {
     const { event } = this.props
