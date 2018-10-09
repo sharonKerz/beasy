@@ -43,7 +43,7 @@ app.get('/events', function(req, res){
  });
 
  app.post('/events', function(req, res){
-    eventsDao.postEvent(req, res)
+    eventsDao.addEvent(req, res)
   });
 
 // start server on the specified port
