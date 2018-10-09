@@ -9,13 +9,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var eventsDao = require('./src/server/db/cloudant/EventsCloudantDao')
+var companiesDao = require('./src/server/db/cloudant/CompaniesCloudantDao')
 // Create a new express server and set up the body-parser
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //serves the index.html
-app.use(express.static(__dirname)); 
+app.use(express.static(__dirname));
 
 // Handle POST requests sent to the /registration URL. Note
 // that the /public directory doesn't have anything that
@@ -38,13 +39,23 @@ app.use(express.static(__dirname));
 // });
 
 // Beasy
-app.get('/events', function(req, res){
+// Events
+app.get('/events', function (req, res) {
     eventsDao.getEvents(req, res)
- });
+});
 
- app.post('/events', function(req, res){
+app.post('/events', function (req, res) {
     eventsDao.addEvent(req, res)
-  });
+});
+
+// Companies
+app.get('/companies', function (req, res) {
+    eventsDao.getEvents(req, res)
+});
+
+app.post('/companies', function (req, res) {
+    eventsDao.addEvent(req, res)
+});
 
 // start server on the specified port
 app.listen(port);

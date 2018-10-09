@@ -30,9 +30,9 @@
 // Look at VCAP_SERVICES if it exists. Note that this is JSON data.
 if (process.env.VCAP_SERVICES) {
     process.env.CLOUDANT_URL = JSON.parse(process.env.VCAP_SERVICES)
-                                   .cloudantNoSQLDB[0].credentials.url;
+        .cloudantNoSQLDB[0].credentials.url;
 } else { // Otherwise look for .env, which is a file of name/value pairs
-    require('dotenv').config({silent: true});
+    require('dotenv').config({ silent: true });
 }
 
 // Just hardcoding the database name, should probably be an env var
@@ -57,15 +57,15 @@ else
     console.log('The database: ' + dbname + ' seems to be fine.');
 
 module.exports.getEvents = (req, res) => {
-    cloudantDB.list({include_docs:true}, function (err, data) {
+    cloudantDB.list({ include_docs: true }, function (err, data) {
         const allDocs = data.rows.map(row => row.doc)
         res.setHeader('Content-Type', 'application/json');
         res.send(allDocs);
-      })
+    })
 }
 
 module.exports.addEvent = (req, res) => {
-    cloudantDB.insert(req.body, function(err, body, header) {
+    cloudantDB.insert(req.body, function (err, body, header) {
         if (err) {
             console.log(`insert failed! ${err.message} on ${dbname}`);
             res.status(500).send(err.message);
@@ -73,6 +73,6 @@ module.exports.addEvent = (req, res) => {
             console.log('New event was successfully processed! with body: ');
             console.log(req.body);
         }
-      })
+    })
 }
 
