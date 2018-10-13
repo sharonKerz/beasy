@@ -11,6 +11,8 @@ class MatchMakerForm extends Component {
             <Wrapper>
                 {console.log(MatchMakerFormData.mainGoals())}
                 <SelectInput inputData={MatchMakerFormData.mainGoals()}> </SelectInput>
+                <SelectInput inputData={MatchMakerFormData.how()}> </SelectInput>
+                <SelectInput inputData={MatchMakerFormData.where()}> </SelectInput>
             </Wrapper>
         );
     }
