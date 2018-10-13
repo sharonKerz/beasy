@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../../axios/axios-beasy'
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Wrapper from '../../hoc/Wrapper/Wrapper'
 import Events from '../../components/Events/Events'
@@ -33,17 +33,21 @@ class EventsBuilder extends Component {
         this.setState({ openEventModal: false });
     };
 
-    addEventHandler = () => {
-        const event = {
-            companyName: "Generated Company",
-            title: "Generated Title",
-            date: "Generated Date",
-            body: "GeneratedBody",
-            id: 100
-        }
-        axios.post('/eventssss', event)
-            .then(response => console.log(response))
-            .catch(error => this.openErrorModalHandle(error.message))
+    redirectToCompanies = () => {
+        this.props.history.push({
+            pathname: '/MatchMaker'
+        })
+
+        // const event = {
+        //     companyName: "Generated Company",
+        //     title: "Generated Title",
+        //     date: "Generated Date",
+        //     body: "GeneratedBody",
+        //     id: 100
+        // }
+        // axios.post('/eventssss', event)
+        //     .then(response => console.log(response))
+        //     .catch(error => this.openErrorModalHandle(error.message))
     };
 
     render() {
@@ -54,7 +58,7 @@ class EventsBuilder extends Component {
                 </Modal>
                 <div>
                     <h2>Events</h2>
-                    <AddButton onClick={this.addEventHandler}></AddButton>
+                    <AddButton onClick={this.redirectToCompanies}></AddButton>
                 </div>
                 <div>
                     <CenterHorizontalGrid>

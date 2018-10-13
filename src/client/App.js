@@ -12,7 +12,7 @@ class App extends Component {
         <Layout>
           <Route path="/" exact component={EventsBuilder} />
           <Route path="/Companies" component={CompanyProfileBuilder} />
-          <Route path="/MatchMaker" component={CompanyProfileBuilder} />
+          <Route path="/MatchMaker" component={MatchMakerBuilder} />
         </Layout>
       </div>
     );
