@@ -2,12 +2,32 @@ module.exports.mainGoals = () => {
     return ({
         ranges: [
             {
-                value: 'Branding',
-                label: 'Branding',
+                value: 'NewProduct',
+                label: 'Launch a New Product',
             },
             {
-                value: 'NewProduct',
-                label: 'Launch New Product',
+                value: 'NewMarket',
+                label: 'Enter a New Market',
+            },
+            {
+                value: 'NewAudience',
+                label: 'Target a New Audience',
+            },
+            {
+                value: 'CreateContent',
+                label: 'Create Content',
+            },
+            {
+                value: 'User Acquisition',
+                label: 'User Acquisition',
+            },
+            {
+                value: 'CreateLeads',
+                label: 'Create Leads',
+            },
+            {
+                value: 'BusinessDevelopment',
+                label: 'Business Development',
             },
         ],
         title: "What do you want to do?",
@@ -19,9 +39,29 @@ module.exports.how = () => {
     return ({
         ranges: [
             {
-                value: 'SocialMarketing',
-                label: 'Social Marketing',
+                value: 'SocialCampaign',
+                label: 'Social Campaign',
             },
+            {
+                value: 'MediaCampaign',
+                label: 'Media Campaign',
+            },
+            {
+                value: 'Event',
+                label: 'Event',
+            },
+            {
+                value: 'Sponsership',
+                label: 'Sponsership',
+            },
+            {
+                value: 'LongTerm',
+                label: 'Long Term Strategic coope',
+            },
+            {
+                value: 'Other',
+                label: 'Other',
+            }
         ],
         title: "How?",
         adornment: ""
@@ -80,3 +120,23 @@ module.exports.achieve = () => {
     });
 }
 
+module.exports.budget = () => {
+    return ({
+        ranges: [
+            {
+                value: '1000',
+                label: '0-1000$',
+            },
+            {
+                value: '10000',
+                label: '1001-10000$',
+            },
+            {
+                value: '100000',
+                label: '10000$ +',
+            },
+        ],
+        title: "What is your busget?",
+        adornment: ""
+    });
+}

@@ -14,6 +14,7 @@ class MatchMakerForm extends Component {
                 <SelectInput inputData={MatchMakerFormData.how()} />
                 <Checkbox inputData={MatchMakerFormData.achieve()} />
                 <SelectInput inputData={MatchMakerFormData.where()} />
+                <SelectInput inputData={MatchMakerFormData.budget()} />
             </Wrapper>
         );
     }
