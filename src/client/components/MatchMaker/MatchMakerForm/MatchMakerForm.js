@@ -5,6 +5,7 @@ import SelectInput from '../../InputFields/SelectInput'
 import Checkbox from '../../InputFields/Checkbox'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import MatchMakerFormData from '../MatchMakerForm/MatchMakerFormData/MatchMakerFormData';
+import BlueButton from '../../Buttons/BlueButton/BlueButton';
 
 class MatchMakerForm extends Component {
     state = {
@@ -14,25 +15,14 @@ class MatchMakerForm extends Component {
         where: '',
         budget: '',
     }
+
     singleAnswerChangeHandler = id => event => {
-        console.log("1")
-        console.log(id)
-        console.log(event.target.value)
-        console.log(this.state)
         const updatedState = { ...this.state }
         updatedState[id] = event.target.value
         this.setState({ [id]: updatedState[id] })
-        console.log("2")
-        console.log(updatedState[id])
-        console.log(this.state)
     }
 
     multiAnswerChangeHandler = id => event => {
-        console.log("1")
-        console.log(id)
-        console.log(event.target.value)
-        console.log(event.target.checked)
-        console.log(this.state)
         const updatedState = { ...this.state }
         if (event.target.checked) {
             updatedState[id].push(event.target.value)
@@ -40,11 +30,13 @@ class MatchMakerForm extends Component {
             updatedState[id].splice(updatedState[id].indexOf(event.target.value), 1)
         }
         this.setState({ [id]: updatedState[id] })
-        console.log("2")
-        console.log(updatedState[id])
-        console.log(this.state)
     }
 
+    sendFormToServer = () => {
+        const goal = {...this.state}
+        axios.post('/goals', goal)
+            .then(response => console.log(response))
+    }    
     render() {
         return (
             <Wrapper>
@@ -54,6 +46,9 @@ class MatchMakerForm extends Component {
                     <Checkbox changed={this.multiAnswerChangeHandler('achieve')} inputData={MatchMakerFormData.achieve()} />
                     <SelectInput changed={this.singleAnswerChangeHandler('where')} inputData={MatchMakerFormData.where()} />
                     <SelectInput changed={this.singleAnswerChangeHandler('budget')} inputData={MatchMakerFormData.budget()} />
+
+                    <BlueButton clicked={this.sendFormToServer} text="Get Beasy"></BlueButton>
+
                 </form>
             </Wrapper>
         );

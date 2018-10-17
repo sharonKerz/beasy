@@ -37,17 +37,6 @@ class EventsBuilder extends Component {
         this.props.history.push({
             pathname: '/MatchMaker'
         })
-
-        // const event = {
-        //     companyName: "Generated Company",
-        //     title: "Generated Title",
-        //     date: "Generated Date",
-        //     body: "GeneratedBody",
-        //     id: 100
-        // }
-        // axios.post('/eventssss', event)
-        //     .then(response => console.log(response))
-        //     .catch(error => this.openErrorModalHandle(error.message))
     };
 
     render() {

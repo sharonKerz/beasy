@@ -7,9 +7,9 @@ const port = process.env.PORT || 8080;
 // request to handle web traffic and requests.
 var express = require('express');
 var bodyParser = require('body-parser');
-var request = require('request');
 var eventsDao = require('./src/server/db/cloudant/EventsCloudantDao')
 var companiesDao = require('./src/server/db/cloudant/CompaniesCloudantDao')
+var goalsDao = require('./src/server/db/cloudant/GoalsCloudantDao')
 // Create a new express server and set up the body-parser
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -55,6 +55,10 @@ app.get('/companies', function (req, res) {
 
 app.post('/companies', function (req, res) {
     eventsDao.addEvent(req, res)
+});
+
+app.post('/goals', function (req, res) {
+    goalsDao.addGoal(req, res)
 });
 
 // start server on the specified port
