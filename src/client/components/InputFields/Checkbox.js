@@ -30,6 +30,7 @@ class CheckboxesGroup extends React.Component {
         ranges[index] = newRange
 
         this.setState({ ranges: ranges })
+        this.props.changed(event)
     };
 
     render() {

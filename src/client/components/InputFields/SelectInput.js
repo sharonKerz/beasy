@@ -26,6 +26,7 @@ class SelectInput extends React.Component {
 
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
+    this.props.changed(event)
   };
 
   render() {
