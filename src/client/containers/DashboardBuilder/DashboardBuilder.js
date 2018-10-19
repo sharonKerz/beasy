@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import SimpleLineChart from "../../components/Dashboard/SimpleLineChart";
 import SimpleTable from "../../components/Dashboard/SimpleTable";
 import SideDrawer from "../../components/Dashboard/SideDrawer/SideDrawer";
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import axios from '../../axios/axios-beasy'
 
 const drawerWidth = 240;
 
@@ -88,8 +90,16 @@ const styles = theme => ({
 
 class DashboardBuilder extends React.Component {
   state = {
-    open: true
+    open: true,
+    goals: []
   };
+
+  componentDidMount() {
+    axios.get('/goals').then(response => {
+        this.setState({ goals: response.data })
+        console.log(response);
+    });
+}
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -114,16 +124,16 @@ class DashboardBuilder extends React.Component {
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             <Typography variant="h4" gutterBottom component="h2">
-              Orders
+              Views
             </Typography>
             <Typography component="div" className={classes.chartContainer}>
               <SimpleLineChart />
             </Typography>
             <Typography variant="h4" gutterBottom component="h2">
-              Products
+              Goals
             </Typography>
             <div className={classes.tableContainer}>
-              <SimpleTable />
+              <SimpleTable classes={classes} goals={this.state.goals} />
             </div>
           </main>
         </div>
@@ -136,4 +146,4 @@ DashboardBuilder.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(DashboardBuilder);
+export default withErrorHandler(withStyles(styles)(DashboardBuilder), axios);

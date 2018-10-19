@@ -57,6 +57,11 @@ app.post('/companies', function (req, res) {
     eventsDao.addEvent(req, res)
 });
 
+// Goals
+app.get('/goals', function (req, res) {
+    goalsDao.getGoals(req, res)
+});
+
 app.post('/goals', function (req, res) {
     goalsDao.addGoal(req, res)
 });
