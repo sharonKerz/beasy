@@ -9,6 +9,7 @@ import CenterHorizontalGrid from '../../ui/Grid/CenterHorizontalGrid'
 import Modal from '../../ui/Modal/Modal'
 import EventSummery from '../../components/Events/EventSummery'
 import AddButton from '../../components/Buttons/AddButton/AddButton'
+import Intro from '../../components/Intro/Intro'
 
 class EventsBuilder extends Component {
     state = {
@@ -45,6 +46,9 @@ class EventsBuilder extends Component {
                 <Modal isOpen={this.state.openEventModal} closeModal={this.closeEventModalHandle}>
                     <EventSummery event={this.state.selectedEvent} />
                 </Modal>
+                <div>
+                    <Intro> </Intro>
+                </div>
                 <div>
                     <h2>Events</h2>
                     <AddButton onClick={this.redirectToCompanies}></AddButton>
