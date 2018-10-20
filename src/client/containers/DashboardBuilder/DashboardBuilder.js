@@ -130,6 +130,7 @@ class DashboardBuilder extends React.Component {
             </Typography>
             <Typography variant="h4" gutterBottom component="h2">
               Your Goals
+
             </Typography>
             <div className={classes.tableContainer}>
               <SimpleTable classes={classes} goals={this.state.goals} />
