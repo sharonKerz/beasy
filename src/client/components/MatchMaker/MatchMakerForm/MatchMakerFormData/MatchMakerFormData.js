@@ -4,33 +4,51 @@ module.exports.mainGoals = () => {
             {
                 value: 'NewProduct',
                 label: 'Launch a New Product',
+                checked: true,
             },
             {
                 value: 'NewMarket',
                 label: 'Enter a New Market',
+                checked: false,
             },
             {
-                value: 'NewAudience',
-                label: 'Target a New Audience',
+                value: 'PotentialCustomers',
+                label: 'Exposure to potential customers',
+                checked: false,
             },
             {
                 value: 'CreateContent',
                 label: 'Create Content',
+                checked: false,
             },
             {
-                value: 'User Acquisition',
-                label: 'User Acquisition',
+                value: 'UserAcquisition',
+                label: 'User/Customer Acquisition',
+                checked: false,
             },
             {
-                value: 'CreateLeads',
-                label: 'Create Leads',
+                value: 'GenerateLeads',
+                label: 'Generate Leads',
+                checked: false,
+            },
+            {
+                value: 'CreateService',
+                label: 'Create Service/Product',
+                checked: false,
+                
             },
             {
                 value: 'BusinessDevelopment',
-                label: 'Business Development',
+                label: 'Business Development Publicity',
+                checked: false,
             },
+            {
+                value: 'Other',
+                label: 'Other',
+                checked: false,
+            }
         ],
-        title: "What do you want to do?",
+        title: "What is your Goal?",
         adornment: ""
     });
 }
@@ -41,26 +59,32 @@ module.exports.how = () => {
             {
                 value: 'SocialCampaign',
                 label: 'Social Campaign',
+                checked: true,
             },
             {
-                value: 'MediaCampaign',
-                label: 'Media Campaign',
+                value: 'TraditionalCampaign',
+                label: 'Traditional Campaign',
+                checked: false,
             },
             {
                 value: 'Event',
                 label: 'Event',
+                checked: false,
             },
             {
                 value: 'Sponsership',
                 label: 'Sponsership',
+                checked: false,
             },
             {
                 value: 'LongTerm',
                 label: 'Long Term Strategic coope',
+                checked: false,
             },
             {
                 value: 'Other',
                 label: 'Other',
+                checked: false,
             }
         ],
         title: "How?",
@@ -116,27 +140,6 @@ module.exports.achieve = () => {
         ],
         title: "What do you want to achieve?",
         error: "Please check at least 1 achievement",
-        adornment: ""
-    });
-}
-
-module.exports.budget = () => {
-    return ({
-        ranges: [
-            {
-                value: '1000',
-                label: '0-1000$',
-            },
-            {
-                value: '10000',
-                label: '1001-10000$',
-            },
-            {
-                value: '100000',
-                label: '10000$ +',
-            },
-        ],
-        title: "What is your busget?",
         adornment: ""
     });
 }

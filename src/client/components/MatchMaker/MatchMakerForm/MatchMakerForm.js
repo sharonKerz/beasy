@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import axios from '../../../axios/axios-beasy'
-import Wrapper from '../../../hoc/Wrapper/Wrapper'
-import SelectInput from '../../InputFields/SelectInput'
-import Checkbox from '../../InputFields/Checkbox'
+import axios from '../../../axios/axios-beasy';
+import Wrapper from '../../../hoc/Wrapper/Wrapper';
+import SelectInput from '../../InputFields/SelectInput';
+import Checkbox from '../../InputFields/Checkbox';
+import Slider from '../../InputFields/Slider';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import MatchMakerFormData from '../MatchMakerForm/MatchMakerFormData/MatchMakerFormData';
 import BlueButton from '../../Buttons/BlueButton/BlueButton';
@@ -45,8 +46,7 @@ class MatchMakerForm extends Component {
                     <SelectInput changed={this.singleAnswerChangeHandler('how')} inputData={MatchMakerFormData.how()} />
                     <Checkbox changed={this.multiAnswerChangeHandler('achieve')} inputData={MatchMakerFormData.achieve()} />
                     <SelectInput changed={this.singleAnswerChangeHandler('where')} inputData={MatchMakerFormData.where()} />
-                    <SelectInput changed={this.singleAnswerChangeHandler('budget')} inputData={MatchMakerFormData.budget()} />
-
+                    <Slider changed={this.singleAnswerChangeHandler('budget')} />
                     <BlueButton clicked={this.sendFormToServer} text="Get Beasy"></BlueButton>
 
                 </form>
