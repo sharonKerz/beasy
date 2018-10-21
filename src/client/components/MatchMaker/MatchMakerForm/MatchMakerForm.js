@@ -4,6 +4,7 @@ import Wrapper from '../../../hoc/Wrapper/Wrapper';
 import SelectInput from '../../InputFields/SelectInput';
 import Checkbox from '../../InputFields/Checkbox';
 import Slider from '../../InputFields/Slider';
+import DatePicker from '../../InputFields/DatePicker';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import MatchMakerFormData from '../MatchMakerForm/MatchMakerFormData/MatchMakerFormData';
 import BlueButton from '../../Buttons/BlueButton/BlueButton';
@@ -15,6 +16,7 @@ class MatchMakerForm extends Component {
         achieve: ['BrandAwareness'],
         where: '',
         budget: '',
+        date: '',
     }
 
     singleAnswerChangeHandler = id => event => {
@@ -47,6 +49,7 @@ class MatchMakerForm extends Component {
                     <Checkbox changed={this.multiAnswerChangeHandler('achieve')} inputData={MatchMakerFormData.achieve()} />
                     <SelectInput changed={this.singleAnswerChangeHandler('where')} inputData={MatchMakerFormData.where()} />
                     <Slider changed={this.singleAnswerChangeHandler('budget')} />
+                    <DatePicker changed={this.singleAnswerChangeHandler('date')} />
                     <BlueButton clicked={this.sendFormToServer} text="Get Beasy"></BlueButton>
 
                 </form>

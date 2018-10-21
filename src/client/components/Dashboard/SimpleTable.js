@@ -32,6 +32,7 @@ function SimpleTable(props) {
                         <TableCell>Want to Achieve</TableCell>
                         <TableCell>Where</TableCell>
                         <TableCell>Budget</TableCell>
+                        <TableCell>Due Date</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -45,6 +46,7 @@ function SimpleTable(props) {
                                 <TableCell>{goal.achieve}</TableCell>
                                 <TableCell>{goal.where}</TableCell>
                                 <TableCell>{goal.budget}</TableCell>
+                                <TableCell>{goal.date}</TableCell>
                             </TableRow>
                         );
                     })}
